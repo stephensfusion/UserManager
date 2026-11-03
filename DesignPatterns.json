@@ -1,0 +1,63 @@
+[
+    {
+        "Interface": "IUserService.cs",
+        "pattern": "Strategy Pattern Interface and Abstract Factory Pattern",
+        "description": "Defines the contract for user service operations across different database providers. Acts as the Strategy interface in the Strategy pattern, allowing runtime selection of database-specific implementations (PostgreSQL, MySQL, SQLServer) without tight coupling to concrete classes. Also serves as part of the Abstract Factory pattern by defining one of the interfaces that concrete factories must create.",
+        "responsibilities": [
+            "Define common user service operations interface",
+            "Enable polymorphic behavior for database operations",
+            "Support dependency injection for user services"
+        ]
+    },
+    {
+        "Interface": "IManageUsers.cs",
+        "pattern": "Strategy Pattern Interface and Abstract Factory Pattern",
+        "description": "Serves as the primary abstraction user management operations, combining Strategy pattern for operation flexibility with Abstract Factory pattern for creating database-specific instances. Enables XML documentation generation.",
+        "responsibilities": [
+            "Enable XML documentation integration for different database types",
+            "Support user management features entailing basic CRUD"
+        ]
+    },
+    {
+        "class": "MySQL.cs",
+        "pattern": "Concrete Strategy Pattern and Product(Abstract Factory Pattern) Implementation",
+        "description": "Implements IUserService interface specifically for MySQL database operations. Serves as a Concrete Strategy in the Strategy pattern for MySQL-based user management and as a concrete product created by the MySQL factory in the Abstract Factory pattern. Provides MySQL implementations with specific connection handling.",
+        "responsibilities": [
+            "Implement MySQL-specific user CRUD operations",
+            "Handle MySQL connection string management",
+            "Provide MySQL-optimized query implementations for user operations"
+        ]
+    },
+    {
+        "class": "PostgreSQL.cs",
+        "pattern": "Concrete Strategy Pattern and Product(Abstract Factory Pattern) Implementation",
+        "description": "PostgreSQL-specific implementation of IUserService interface. Functions as a Concrete Strategy for PostgreSQL database operations in user management and serves as a concrete product in the Abstract Factory pattern.",
+        "responsibilities": [
+            "Implement PostgreSQL-specific user operations",
+            "Handle PostgreSQL connection management and pooling",
+            "Generate PostgreSQL-specific XML documentation"
+        ]
+    },
+    {
+        "class": "SQL.cs",
+        "pattern": "Concrete Strategy Pattern and Product Implementation",
+        "description": "SQL Server implementation of IUserService interface. Implements Concrete Strategy pattern for SQL Server-specific functionality and serves as a concrete product created by the SQL Server factory in the Abstract Factory pattern.",
+        "responsibilities": [
+            "Implement SQL Server-specific user operations",
+            "Handle SQL Server connection management and security",
+            "Generate SQL Server-specific XML documentation"
+        ]
+    },
+    {
+        "class": "ManageUsers.cs",
+        "pattern": "Context Pattern with Factory Selection and Strategy Coordination",
+        "description": "Acts as the Context in the Strategy pattern and incorporates Factory pattern for dynamic strategy selection. Determines the appropriate database strategy based on connection string analysis and delegates user operations to the selected concrete implementation. Provides a unified entry point for user management operations while abstracting the complexity of database selection and strategy coordination.",
+        "responsibilities": [
+            "Analyze connection strings to determine appropriate database strategy",
+            "Select and instantiate the correct database factory for user operations",
+            "Delegate user operations to concrete strategy implementations",
+            "Coordinate between IUserService and IManageUsers operations",
+            "Handle strategy switching and configuration management"
+        ]
+    }
+]

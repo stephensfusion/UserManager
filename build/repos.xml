@@ -1,0 +1,14 @@
+<Repositories>
+    <Repository>
+        <Name>NSCore</Name>
+        <Branch>main</Branch>
+    </Repository>
+    <Repository>
+        <Name>NSCache</Name>
+        <Branch>main</Branch>
+    </Repository>
+    <Repository>
+        <Name>NSEncryption</Name>
+        <Branch>main</Branch>
+    </Repository>
+</Repositories>

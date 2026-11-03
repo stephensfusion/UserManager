@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.9">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.9">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.9" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <NSCorePath Condition="Exists('.\build\NsStore\NSCore.dll')">.\build\NsStore\NSCore.dll</NSCorePath>
+    <NSCorePath Condition="!Exists('.\build\NsStore\NSCore.dll')">..\NsStore\NSCore.dll</NSCorePath>
+    <NSEncryptionPath Condition="Exists('.\build\NsStore\NSEncryption.dll')">.\build\NsStore\NSEncryption.dll</NSEncryptionPath>
+    <NSEncryptionPath Condition="!Exists('.\build\NsStore\NSEncryption.dll')">..\NsStore\NSEncryption.dll</NSEncryptionPath>
+    <NSCachePath Condition="Exists('.\build\NsStore\NSCache.dll')">.\build\NsStore\NSCache.dll</NSCachePath>
+    <NSCachePath Condition="!Exists('.\build\NsStore\NSCache.dll')">..\NsStore\NSCache.dll</NSCachePath>
+</PropertyGroup>  
+
+  <ItemGroup>
+	  <Reference Include="NSEncryption">
+		  <HintPath>$(NSEncryptionPath)</HintPath>
+	  </Reference>
+    <Reference Include="NSCache">
+      <HintPath>$(NSCachePath)</HintPath>
+    </Reference>
+    <Reference Include="NSCore">
+      <HintPath>$(NSCorePath)</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
